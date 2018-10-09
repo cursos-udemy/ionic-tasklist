@@ -9,12 +9,15 @@ import { TerminadosPage } from '../pages/terminados/terminados.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { TasklistProvider } from '../providers/tasklist.provider';
+import { AgregarPage } from '../pages/agregar/agregar.component';
 
 @NgModule({
   declarations: [
     MyApp,
     PendientesPage,
     TerminadosPage,
+    AgregarPage,
     TabsPage
   ],
   imports: [
@@ -26,11 +29,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     PendientesPage,
     TerminadosPage,
+    AgregarPage,
     TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    TasklistProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
