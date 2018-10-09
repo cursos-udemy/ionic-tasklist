@@ -3,16 +3,16 @@ import { Lista } from "../models";
 
 @Injectable()
 export class TasklistProvider {
-  listas:Lista[] = [];
+  listas: Lista[] = [];
 
   constructor() {
-      console.log("TasklistProvider [OK]");
+    console.log("TasklistProvider [OK]");
+    this.initLista();
+  }
 
-      const l1 = new Lista("Recolectar piedras del infinito");
-      const l2 = new Lista ("Heroes a vencer");
-
-      this.listas.push(l1, l2);
-
-      console.log(this.listas);      
+  private initLista(): void {
+    const l1 = new Lista("Recolectar piedras del infinito");
+    const l2 = new Lista("Heroes a vencer");
+    this.listas.push(l1, l2);
   }
 }

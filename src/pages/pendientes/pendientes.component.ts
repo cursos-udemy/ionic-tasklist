@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { TasklistProvider } from "../../providers/tasklist.provider";
 import { Lista } from "../../models";
-import { NavController } from "ionic-angular";
+import { NavController, AlertController, Alert } from "ionic-angular";
 import { AgregarPage } from "../agregar/agregar.component";
 
 @Component({
@@ -11,8 +11,11 @@ import { AgregarPage } from "../agregar/agregar.component";
 export class PendientesPage {
   listas: Lista[] = [];
 
-  constructor(private tasklistProvider: TasklistProvider,
-    private navController:NavController) {
+  constructor(
+    private tasklistProvider: TasklistProvider,
+    private navController: NavController,
+    private alertController: AlertController
+  ) {
     this.listas = this.tasklistProvider.listas;
   }
 
@@ -21,6 +24,29 @@ export class PendientesPage {
   }
 
   public agregarLista() {
-    this.navController.push(AgregarPage);
+   const alerta = this.alertController.create({
+      title: "Nueva lista",
+      message: "Nombre de la nueva lista",
+      inputs: [{ name: "titulo", placeholder: "título" }],
+      buttons: [
+        { text: "Cancelar" },
+        {
+          text: "Aceptar",
+          handler: data => {
+            if (data.titulo.length == 0) {
+              console.warn("No completo el nombre de la lista");
+              return;
+            }
+            
+            this.navController.push(AgregarPage, {
+              titulo: data.titulo
+            });
+            
+          }
+        }
+      ]
+    });
+
+    alerta.present();
   }
 }
