@@ -33,8 +33,8 @@ export class PendientesPage {
         {
           text: "Aceptar",
           handler: data => {
-            if (data.titulo.length == 0) {
-              console.warn("No completo el nombre de la lista");
+            if (data.titulo.length === 0) {
+              console.warn("Titulo de la lista incompleto");
               return;
             }
             
