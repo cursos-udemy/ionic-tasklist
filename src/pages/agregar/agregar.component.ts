@@ -38,4 +38,8 @@ export class AgregarPage {
   public actualizar (item:ListaItem):void {
     item.completado = !item.completado;
   } 
+
+  public eliminar(index:number):void {
+    this.lista.items.splice( index, 1);
+  }
 }
