@@ -17,6 +17,7 @@ export class AgregarPage {
   ) {
     const titulo: string = this.navParams.get("titulo");
     this.lista = new Lista(titulo);
+    this.tasklistProvider.agregarLista(this.lista);
     this.nombreTarea = "";
   }
 

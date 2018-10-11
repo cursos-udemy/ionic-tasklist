@@ -24,10 +24,11 @@ export class PendientesPage {
   }
 
   public agregarLista() {
+    
    const alerta = this.alertController.create({
       title: "Nueva lista",
       message: "Nombre de la nueva lista",
-      inputs: [{ name: "titulo", placeholder: "título" }],
+      inputs: [{ name: "titulo", placeholder: "Título de la lista" }],
       buttons: [
         { text: "Cancelar" },
         {

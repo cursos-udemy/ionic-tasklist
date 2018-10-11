@@ -3,16 +3,28 @@ import { Lista } from "../models";
 
 @Injectable()
 export class TasklistProvider {
-  listas: Lista[] = [];
+  public listas: Lista[] = [];
 
   constructor() {
     console.log("TasklistProvider [OK]");
-    this.initLista();
+    this.loadStorage();
   }
 
-  private initLista(): void {
-    const l1 = new Lista("Recolectar piedras del infinito");
-    const l2 = new Lista("Heroes a vencer");
-    this.listas.push(l1, l2);
+  public agregarLista(lista: Lista) {
+    this.listas.push(lista);
+    this.saveStorage();
+  }
+
+  public saveStorage() {
+    localStorage.setItem("data", JSON.stringify(this.listas));
+  }
+
+  public loadStorage() {
+    let valueStorage: string = localStorage.getItem("data");
+    if (valueStorage) {
+      this.listas = JSON.parse(valueStorage);
+    } else {
+      this.listas = [];
+    }
   }
 }
