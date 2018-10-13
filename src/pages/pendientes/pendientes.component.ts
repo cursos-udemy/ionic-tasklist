@@ -1,30 +1,16 @@
 import { Component } from "@angular/core";
-import { TasklistProvider } from "../../providers/tasklist.provider";
-import { Lista } from "../../models";
-import { NavController, AlertController, Alert } from "ionic-angular";
 import { AgregarPage } from "../agregar/agregar.component";
+import { NavController, AlertController } from "ionic-angular";
 
 @Component({
   selector: "page-pendientes",
   templateUrl: "pendientes.component.html"
 })
 export class PendientesPage {
-  listas: Lista[] = [];
-
   constructor(
-    private tasklistProvider: TasklistProvider,
     private navController: NavController,
     private alertController: AlertController
-  ) {
-    this.listas = this.tasklistProvider.listas;
-  }
-
-  public listaSeleccionada(lista: Lista) {
-    this.navController.push(AgregarPage, {
-      titulo: lista.titulo,
-      lista: lista
-    });
-  }
+  ) {}
 
   public agregarLista() {
     const alerta = this.alertController.create({
@@ -50,9 +36,5 @@ export class PendientesPage {
     });
 
     alerta.present();
-  }
-
-  public eliminarLista(lista: Lista): void {
-    this.tasklistProvider.eliminarLista(lista);
   }
 }

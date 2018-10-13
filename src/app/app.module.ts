@@ -12,6 +12,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TasklistProvider } from '../providers/tasklist.provider';
 import { AgregarPage } from '../pages/agregar/agregar.component';
 import { FiltroCompletadoPipe } from '../pipes/filtro-completado/filtro-completado';
+import { ListasComponent } from '../components/listas.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FiltroCompletadoPipe } from '../pipes/filtro-completado/filtro-completa
     TerminadosPage,
     AgregarPage,
     TabsPage,
-    FiltroCompletadoPipe
+    FiltroCompletadoPipe,
+    ListasComponent
   ],
   imports: [
     BrowserModule,

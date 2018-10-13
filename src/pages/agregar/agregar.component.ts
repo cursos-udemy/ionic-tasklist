@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
-import { TasklistProvider } from "../../providers/tasklist.provider";
 import { NavParams } from "ionic-angular";
+
+import { TasklistProvider } from "../../providers/tasklist.provider";
 import { Lista, ListaItem } from "../../models";
 
 @Component({
@@ -49,16 +50,15 @@ export class AgregarPage {
     const pendientes = this.lista.items.filter(itemData => {
       return !itemData.completado;
     }).length;
-    console.log(pendientes);
 
     if (pendientes === 0) {
       this.lista.terminada = true;
       this.lista.terminadaEn = new Date();
     } else {
-      this.lista.terminada = true;
+      this.lista.terminada = false;
       this.lista.terminadaEn = new Date();
     }
-    
+
     this.tasklistProvider.saveStorage();
   }
 
