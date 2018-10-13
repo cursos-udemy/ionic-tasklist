@@ -15,6 +15,14 @@ export class TasklistProvider {
     this.saveStorage();
   }
 
+  public eliminarLista(lista: Lista): void {
+    this.listas = this.listas.filter(listData => {
+      return listData.id !== lista.id;
+    });
+
+    this.saveStorage();
+  }
+
   public saveStorage() {
     localStorage.setItem("data", JSON.stringify(this.listas));
   }

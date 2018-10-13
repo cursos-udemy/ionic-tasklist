@@ -20,12 +20,14 @@ export class PendientesPage {
   }
 
   public listaSeleccionada(lista: Lista) {
-    console.log(lista);
+    this.navController.push(AgregarPage, {
+      titulo: lista.titulo,
+      lista: lista
+    });
   }
 
   public agregarLista() {
-    
-   const alerta = this.alertController.create({
+    const alerta = this.alertController.create({
       title: "Nueva lista",
       message: "Nombre de la nueva lista",
       inputs: [{ name: "titulo", placeholder: "Título de la lista" }],
@@ -38,16 +40,19 @@ export class PendientesPage {
               console.warn("Titulo de la lista incompleto");
               return;
             }
-            
+
             this.navController.push(AgregarPage, {
               titulo: data.titulo
             });
-            
           }
         }
       ]
     });
 
     alerta.present();
+  }
+
+  public eliminarLista(lista: Lista): void {
+    this.tasklistProvider.eliminarLista(lista);
   }
 }

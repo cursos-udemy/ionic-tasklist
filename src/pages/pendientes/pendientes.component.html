@@ -6,11 +6,27 @@
 
 <ion-content>
 
-  <img src="../../assets/imgs/pendientes.jpg" />
   <ion-list>
-    <button ion-item *ngFor="let lista of listas" (click)="listaSeleccionada(lista)">
-      {{ lista.titulo }}
-    </button>
+    <ion-item-sliding *ngFor="let lista of listas|filtroCompletado:false">
+
+      <ion-item-options side="left">
+        <button ion-button icon-only color="danger"
+        (click)="eliminarLista(lista)"  > 
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-item-options>
+      
+      <button ion-item  (click)="listaSeleccionada(lista)">
+        {{ lista.titulo }}
+        <ion-note item-end>
+          {{lista.items.length}} tareas
+        </ion-note>
+      </button>
+
+    </ion-item-sliding>
+
+
+
   </ion-list>
 
   <ion-fab bottom right>
